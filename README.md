@@ -1,4 +1,4 @@
-**Problem 1 for the Group Project for IT210.**
+<h1>**Problem 1 for the Group Project for IT210.**</h1>
 <br>Done by Guillaume Comfort, using Python
 
 Objective: To implement the following CPU scheduling algorithm using any programming language

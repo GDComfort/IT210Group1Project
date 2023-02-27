@@ -6,7 +6,7 @@ b) Shortest Job First
 c) Round Robin Scheduling,
 d) Priority Scheduling
 
-FIRST COME FIRST SERVE: CPU scheduler will decide which process should be given the CPU for
+**FIRST COME FIRST SERVE**: CPU scheduler will decide which process should be given the CPU for
 its execution. For this CPU uses different algorithm to choose among the process. One among that algorithm
 is FCFS algorithm. In this algorithm the process which arrives first is given the CPU after finishing its
 request only it will allow CPU to execute other process.
@@ -26,7 +26,7 @@ ALGORITHM:
 - Step11: Display the result.
 
 
-SHORTEST JOB FIRST: CPU scheduler will decide which process should be given the CPU for its
+**SHORTEST JOB FIRST**: CPU scheduler will decide which process should be given the CPU for its
 execution. For this CPU use different algorithm to choose among the process. One among that algorithm is
 SJF algorithm. In this algorithm the process which has less service time given the CPU after finishing its
 request only it will allow CPU to execute next other process.
@@ -45,7 +45,7 @@ ALGORITHM:
 - Step11: Display the result.
 
 
-ROUND ROBIN: CPU scheduler will decide which process should be given the CPU for its execution.
+**ROUND ROBIN**: CPU scheduler will decide which process should be given the CPU for its execution.
 For this it use different algorithm to choose among the process .one among that algorithm is Round robin
 algorithm. In this algorithm we are assigning some time slice .The process is allocated according to the time slice ,if
 the process service time is less than the time slice then process itself will release the CPU voluntarily .The
@@ -68,7 +68,7 @@ ALGORITHM:
 - Step 5: Print the results of the step 4
 
 
-PRIORITY SCHEDULING: CPU scheduler will decide which process should be given the CPU for its
+**PRIORITY SCHEDULING**: CPU scheduler will decide which process should be given the CPU for its
 execution. For this it use different algorithm to choose among the process. One among that algorithm is
 Priority Scheduling algorithm. In this algorithm the process which has highest priority executed first. After
 finishing its request only, it will allow CPU to execute next process which has next priority level.

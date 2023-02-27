@@ -1,10 +1,10 @@
 **Problem 1 for the Group Project for IT210.**
 
 Objective: To implement the following CPU scheduling algorithm using any programming language
-a) First Come First Serve,
-b) Shortest Job First
-c) Round Robin Scheduling,
-d) Priority Scheduling
+1. First Come First Serve,
+2. Shortest Job First
+3. Round Robin Scheduling,
+4. Priority Scheduling
 
 **FIRST COME FIRST SERVE**: CPU scheduler will decide which process should be given the CPU for
 its execution. For this CPU uses different algorithm to choose among the process. One among that algorithm

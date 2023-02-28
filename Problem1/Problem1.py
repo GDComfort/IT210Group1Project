@@ -8,23 +8,23 @@ class Scheduling:
 # FCFS
     def FirstCome():
         scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
-        schednum = len(scheddata)
+        schedlen = len(scheddata)
         WaitingTime = 0.00
         Totalwait = 0.00
         AvgWait = 0.00
         TAT = 0.00
 
-        for i in range(schednum):
+        for i in range(schedlen):
             num = scheddata[i]
             while num >= 0:
                 print(num)
                 num -= 1
                 Totalwait += 1
                 WaitingTime += 1
-            print("Waiting Time:"+str(WaitingTime - 1))
+            print("Process finished, waiting time was:"+str(WaitingTime - 1))
             WaitingTime = 0.00
-        Avgwait = (Totalwait / schednum)
-        print("Total Wait Time:"+str(Totalwait - schednum))
+        Avgwait = (Totalwait / schedlen)
+        print("Processes Finished. Total Waiting time was:"+str(Totalwait - schedlen))
         print("Average Wait Time:"+str(Avgwait))
 
         

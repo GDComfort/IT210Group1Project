@@ -26,3 +26,5 @@ class Scheduling:
         Avgwait = (Totalwait / schednum)
         print("Total Wait Time:"+str(Totalwait - schednum))
         print("Average Wait Time:"+str(Avgwait))
+
+        

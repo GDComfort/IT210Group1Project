@@ -3,7 +3,7 @@
 
 class Scheduling:
     #scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
-    #schednum = len(selfdata) 
+    #schednum = len(scheddata) 
 
 # FCFS
     def FirstCome():

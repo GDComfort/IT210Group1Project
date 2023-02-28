@@ -2,8 +2,8 @@
 #Done by Guillaume Comfort.
 
 class Scheduling:
-    #scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1] Data Set
-    #schednum = len(selfdata) Number of processes to complete.
+    #scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
+    #schednum = len(selfdata) 
 
 # FCFS
     def FirstCome():
@@ -26,5 +26,3 @@ class Scheduling:
         Avgwait = (Totalwait / schednum)
         print("Total Wait Time:"+str(Totalwait - schednum))
         print("Average Wait Time:"+str(Avgwait))
-
-    FirstCome()

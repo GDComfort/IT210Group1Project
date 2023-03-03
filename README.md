@@ -11,6 +11,6 @@ The Group members/Their Github and their respective problems they were responsib
 
 - Glory Deji-Akinlotan - gdeji - Problem 6: File Allocation Strategies: (a) Sequential, (b) Indexed, (c) Linked
 
-- Uloma Udeh - ulofyn1 - 
+- Uloma Udeh - ulofyn1 - problem 2: Bankers Algorithm for Deadlock Avoidance
 
 - Precious Onyejose

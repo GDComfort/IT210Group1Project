@@ -11,7 +11,6 @@ The Group members/Their Github and their respective problems they were responsib
 
 - Glory Deji-Akinlotan - gdeji - Problem 6: File Allocation Strategies: (a) Sequential, (b) Indexed, (c) Linked
 
-- Uloma Udeh - ulofyn1 - Problem 4: Memory Allocation Methods for Fixed Partition: (a) First Fit, (b)
-Worst Fit, and (c) Best Fit
+- Uloma Udeh - ulofyn1 - Problem 2: Bankers Algorithm for Deadlock Avoidance
 
-- Precious Onyejose
+- Precious Onyejose - 

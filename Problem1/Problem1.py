@@ -16,7 +16,6 @@ class Scheduling:
         schedlen = len(scheddata)
         WaitingTime = 0.00
         Totalwait = 0.00
-        AvgWait = 0.00
         TAT = 0.00
 
         for i in range(schedlen):
@@ -33,41 +32,35 @@ class Scheduling:
         print("Average Wait Time:"+str(Avgwait))
 
 #Shortest Job First: 
-
     def SJN():
-
         scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
-        schedwait = [0, 3, 5, 8, 11, 14, 15, 18, 19, 22]
+        Schd = list(scheddata)
         schedlen = len(scheddata)
-        WaitingTime = 0.00
+        WaitingTime = [0]
         Totalwait = 0.00
-        AvgWait = 0.00
-        TAT = 0.00
+        Turnaround = [0]
+        schedwaithusfar = 0.00
 
+        for i in range(int(schedlen), 0, -1):
+            for j in range(1, int(schedlen)):
+                if Schd[j - 1] > Schd[j]:
+                    tempo = Schd[j - 1]
+                    Schd[j - 1] = Schd[j]
+                    Schd[j] = tempo
 
-        for i in range(schedlen):
-            wait = schedwait[i]
-            num = scheddata[i]
-            if schedwait[i+1] <= 0 and scheddata[i+1] < scheddata[i]:
-                scheddata[i], scheddata[i+1] = scheddata[i+1], scheddata[i]     
-                while num >= 1:
-                    print(num)
-                    num -= 1
-                    Totalwait += 1
-                    WaitingTime += 1
-                    schedwait = [x - 1 for x in schedwait]
-                print("Process finished, waiting time was:"+str(WaitingTime))
-                WaitingTime = 0.00
+        for i in range(1, int(schedlen)):
+            tempo = int(Schd[i - 1]) + int(WaitingTime[i-1])
+            WaitingTime.append(tempo)
+            
+        for i in range(0, int(schedlen)):
+            Totalwait = Totalwait + WaitingTime[i]
+            Avgwait = Totalwait / int(schedlen)
+            Turnaround = WaitingTime[i] + int(Schd[i])
         
-            else:
-                while num >= 1:
-                    print(num)
-                    num -= 1
-                    Totalwait += 1
-                    WaitingTime += 1
-                    schedwait = [x - 1 for x in schedwait]
-                print("Process finished, waiting time was:"+str(WaitingTime))
-                WaitingTime = 0.00
-        Avgwait = (Totalwait / schedlen)
         print("Processes Finished. Total Waiting time was:"+str(Totalwait))
-        print("Average Wait Time:"+str(Avgwait))
+        print("The average wait time was:"+str(Avgwait))
+        print("The turnaround time was:"+str(Turnaround))
+
+
+
+    

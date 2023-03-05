@@ -38,11 +38,33 @@ class Scheduling:
         scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
         Schd = list(scheddata)
         schedlen = len(scheddata)
-        WaitingTime = [0]
+        WaitingTime = 0.00
         Totalwait = 0.00
-        Turnaround = [0]
+        Turnaround = 0.00
         schedwaithusfar = 0.00
 
+        for i in range(schedlen, 0, -1):
+            for j in range(1, schedlen):
+                if Schd[j - 1] > Schd[j]:
+                    Schd[j - 1], Schd[j] = Schd[j], Schd[j - 1]
+        
+        for i in range(schedlen):
+            num = Schd[i]
+            while num >= 1:
+                print(num)
+                num -= 1
+                Totalwait += 1
+                WaitingTime += 1
+            print("Process finished, waiting time was:"+str(WaitingTime))
+            Turnaround = Turnaround + (Totalwait - WaitingTime)
+            WaitingTime=0.00
+        Avgwait = (Totalwait / schedlen)
+        print("Processes Finished. Total Waiting time was:"+str(Totalwait))
+        print("Average Wait Time:"+str(Avgwait))   
+        print("Turnaround time:"+str(Turnaround))
+
+'''
+Possibly another form of SJN? Unsure, Idk if it does what I want.
         for i in range(int(schedlen), 0, -1):
             for j in range(1, int(schedlen)):
                 if Schd[j - 1] > Schd[j]:
@@ -62,6 +84,7 @@ class Scheduling:
         print("Processes Finished. Total Waiting time was:"+str(Totalwait))
         print("The average wait time was:"+str(Avgwait))
         print("The turnaround time was:"+str(Turnaround))
+'''
 
 
 

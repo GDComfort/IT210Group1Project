@@ -16,6 +16,7 @@ class Scheduling:
         schedlen = len(scheddata)
         WaitingTime = 0.00
         Totalwait = 0.00
+        AvgWait = 0.00
         TAT = 0.00
 
         for i in range(schedlen):
@@ -26,12 +27,10 @@ class Scheduling:
                 Totalwait += 1
                 WaitingTime += 1
             print("Process finished, waiting time was:"+str(WaitingTime))
-            TAT = TAT + (Totalwait - WaitingTime)
             WaitingTime = 0.00
         Avgwait = (Totalwait / schedlen)
         print("Processes Finished. Total Waiting time was:"+str(Totalwait))
         print("Average Wait Time:"+str(Avgwait))
-        print("Turnaround time:"+str(TAT))
 
 #Shortest Job First: 
     def SJN():
@@ -63,29 +62,36 @@ class Scheduling:
         print("Average Wait Time:"+str(Avgwait))   
         print("Turnaround time:"+str(Turnaround))
 
-'''
-Possibly another form of SJN? Unsure, Idk if it does what I want.
-        for i in range(int(schedlen), 0, -1):
-            for j in range(1, int(schedlen)):
-                if Schd[j - 1] > Schd[j]:
-                    tempo = Schd[j - 1]
-                    Schd[j - 1] = Schd[j]
-                    Schd[j] = tempo
-
-        for i in range(1, int(schedlen)):
-            tempo = int(Schd[i - 1]) + int(WaitingTime[i-1])
-            WaitingTime.append(tempo)
-
-        for i in range(0, int(schedlen)):
-            Totalwait = Totalwait + WaitingTime[i]
-            Avgwait = Totalwait / int(schedlen)
-            Turnaround = WaitingTime[i] + int(Schd[i])
-        
-        print("Processes Finished. Total Waiting time was:"+str(Totalwait))
-        print("The average wait time was:"+str(Avgwait))
-        print("The turnaround time was:"+str(Turnaround))
-'''
-
-
-
+#Round Robin Scheduling:
+    def RRB():
+        scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
+        Schd = list(scheddata)
+        schedlen = len(scheddata)
+        WaitingTime = [0]
+        Totalwait = [0]
+        Turnaround = [0]
+        schedwaithusfar = 0.00
+        roundcounter = 0
     
+        while len(Schd) and max(Schd) >= 0:
+            for i in range(0, schedlen, 1):
+                num = Schd[i]
+                print(num)
+                Schd[i] -= 1
+                Totalwait = [x + 1 for x in Totalwait]
+                WaitingTime = [x + 1 for x in WaitingTime]
+            roundcounter += 1
+            if 0 in Schd:
+                print("Process Finished. waiting time was "+str(WaitingTime))
+                Schd.remove(0)
+                schedlen = len(Schd)
+            print("Round "+str(roundcounter)+" done.")
+            print("Round "+str(roundcounter+1)+" starting.")
+        TW = [x / 10 for x in Totalwait]
+        print("Aborting round "+str(roundcounter+1)+", processes finished. Total waiting time was:"+str(Totalwait))
+        print("Average waiting time was:"+str(TW))
+                    
+
+            
+
+

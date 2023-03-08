@@ -7,7 +7,7 @@ class Scheduler:
 
     def run(sched):
         while True:
-            print("Which Scheduling Algorithm would you like to call?\n")
+            print("\nWhich Scheduling Algorithm would you like to call?\n")
             print("1: First Come First Serve.")
             print("2: Shortest Job Next.")
             print("3: Round Robin Scheduling.")
@@ -29,7 +29,9 @@ class Scheduler:
                 sched.Scheduling.DATA()
                 sched.Scheduling.RRB()
             elif choice == 4:
-                print("\nSorry! This Algorithm is unavailable at the moment!")
+                print("\n")
+                sched.Scheduling.DATA()
+                sched.Scheduling.Prio()
             elif choice == 5:
                 break
             else:

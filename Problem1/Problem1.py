@@ -75,16 +75,66 @@ class Scheduling:
 
 #Round Robin Scheduling:
     def RRB():
-        scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]
-        Schd = list(scheddata)
+        scheddata =[] # Step 1: Initializing an empty list
+        NoP = int(input("Enter the number of processes.")) # Step 2: Receiving input from user to fill out processes
+        for i in range(int(NoP)):
+            process = input(f"Enter the processing time of process {i+1}: ") # Step 2: Getting burst time for each process.
+            scheddata.append(process) 
+        Schd = list(scheddata) 
+        Schd2 = list(scheddata)
         schedlen = len(scheddata)
-        WaitingTime = [0, 0]
-        WT = list(WaitingTime)
-        Totalwait = [0]
+        WaitingTime = [0]
+        Totalwait = 0.00
         Turnaround = [0]
+        Totturnaround = 0
+        quantum = 5 #Time Quantum
+        Time = 0 #Current time
+
+        while(1):
+            done = True
+            for i in range(int(schedlen)):
+                if int(Schd[i]) > 0: 
+                    done = False
+                    if int(Schd[i]) > quantum: #Else:
+                        Time += quantum
+                        Schd[i] = int(Schd[i]) - quantum
+                    else: #Step 3: If the time quantum is greater than the burst time.
+                        Time = Time + int(Schd[i])
+                        WaitingTime.append(Time - int(Schd2[i]))
+                        Schd[i] = 0
+ 
+            if done == True: 
+                break
+
+        for i in range(int((schedlen)+1)):
+            Totalwait = Totalwait + int(WaitingTime[i])
+        for i in range(int(schedlen)):
+            T = int(Schd2[i]) + int(WaitingTime[i])
+            Turnaround.append(T)
+            Totturnaround = Totturnaround + Turnaround[i]
+
+        print("\nThe total waiting Time for all processes was:"+str(Totalwait))
+        print("The average waiting time was:"+str(Totalwait / NoP)) # Step 4&5: Average wait Time
+        print("The total turnaround time was:"+str(Totturnaround)) 
+        print("The average turnaround time was:"+str(Totturnaround / NoP)) #Step 4&5
+
+'''
+Potential for another Round robin? doesn't quite satisfy the requirements of the steps but I like it.
+    def RRB():
+        scheddata = []
+        schedlen = int(input("Enter the number of processes."))
+        for i in range(int(schedlen))
+            process = input(f"Enter the processing time of prcess {i+1}: ")
+            scheddata.append(process)
+        Schd = list(scheddata)
+        WaitingTime = [0, 0]
+        #WT = list(WaitingTime)
+        Totalwait = [0]
+        #Turnaround = [0]
         roundcounter = 0
     
-        while len(Schd) and len(WT) and max(Schd) >= 0:
+        while len(Schd) and max(Schd) >= 0:
+            print("Round "+str(roundcounter+1)+" starting.")
             for i in range(0, schedlen, 1):
                 num = Schd[i]
                 print(str(num)+" - 1 = "+str(num-1))
@@ -99,35 +149,11 @@ class Scheduling:
                 WaitingTime[1] == 0
                 schedlen = len(Schd)
             print("Round "+str(roundcounter)+" done.\n")
-            print("Round "+str(roundcounter+1)+" starting.")
         TW = [x / 10 for x in Totalwait]
-        print("Aborting round "+str(roundcounter+1)+", "+str(roundcounter)+" processes were finished. Total waiting time was:"+str(Totalwait))
+        print("No more processes. "+str(roundcounter)+" processes were finished. Total waiting time was:"+str(Totalwait))
         print("Average waiting time was:"+str(TW))
         #print("The turnaround time was:"+str(Turnaround))
-
 '''
-Possibly another form of SJN? Unsure, Idk if it does what I want.
-        for i in range(int(schedlen), 0, -1):
-            for j in range(1, int(schedlen)):
-                if Schd[j - 1] > Schd[j]:
-                    tempo = Schd[j - 1]
-                    Schd[j - 1] = Schd[j]
-                    Schd[j] = tempo
-
-        for i in range(1, int(schedlen)):
-            tempo = int(Schd[i - 1]) + int(WaitingTime[i-1])
-            WaitingTime.append(tempo)
-
-        for i in range(0, int(schedlen)):
-            Totalwait = Totalwait + WaitingTime[i]
-            Avgwait = Totalwait / int(schedlen)
-            Turnaround = WaitingTime[i] + int(Schd[i])
-        
-        print("Processes Finished. Total Waiting time was:"+str(Totalwait))
-        print("The average wait time was:"+str(Avgwait))
-        print("The turnaround time was:"+str(Turnaround))
-'''
-
 
 
     

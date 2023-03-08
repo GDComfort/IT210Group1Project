@@ -2,10 +2,10 @@
 <br>Done by Guillaume Comfort, using Python
 
 Objective: To implement the following CPU scheduling algorithm using any programming language
-1. First Come First Serve,
-2. Shortest Job First
-3. Round Robin Scheduling,
-4. Priority Scheduling
+1. First Come First Serve, - DONE (?)
+2. Shortest Job First, - DONE (?)
+3. Round Robin Scheduling, - MOSTLY DONE(?) - Will probably need to remake to put in line with the assignment.
+4. Priority Scheduling, - NOT DONE
 
 **FIRST COME FIRST SERVE**: CPU scheduler will decide which process should be given the CPU for
 its execution. For this CPU uses different algorithm to choose among the process. One among that algorithm

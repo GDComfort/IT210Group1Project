@@ -11,6 +11,7 @@ class Scheduling:
         sched.len = 0
 
     def DATA(sched):
+        sched.data = []
         sched.len = int(input("Enter the number of processes: ")) # Allows user to input a number for processes
         for i in range(int(sched.len)):
             T = int(input(f"Enter a time for Process {i+1}: ")) # Allows user to set burst time for processes
@@ -22,8 +23,8 @@ class Scheduling:
     def FirstCome(sched):
         print("\n")
         Schd = list(sched.data)  # Step 1&2&3&4: Create number of processes, with ID & service time for each process and their processing times.
-        WaitingTime = 0.00  # Step 3: Waiting Time of first process is zero
-        Totalwait = 0.00
+        ServiceTime = 0.00  
+        Totalwait = 0.00 # Step 3: Waiting Time of first process is zero
         TAT = 0.00
         AvgTAT = 0.00
 
@@ -33,12 +34,12 @@ class Scheduling:
             while num >= 1: # Until the index value is reduced to 0. Yields expected order with control data.
                 print(num)
                 num -= 1 
-                Totalwait += 1   # Step 4&5&6&7: Calculating Total time&Totalwait of one process. Waiting time of one process total time of previous
-                WaitingTime += 1
-            print(f"Process finished, waiting time to finish process was: {WaitingTime}") # Step 11: Displaying Waiting time of one process seperate from the rest.
+                ServiceTime += 1
+            print(f"Process finished, service time required to finish process was: {ServiceTime}") # Step 11: Displaying Waiting time of one process seperate from the rest.
+            Totalwait += ServiceTime  # Step 4&5&6&7: Calculating Total time&Totalwait of one process by adding the waiting time of the previously completed process to it.
             print(f"The total time waiting to finish process was: {Totalwait}.\n") # Step 11: Displaying the Waiting time of one process, in relation to all the rest.
-            TAT = TAT + (Totalwait - WaitingTime) # Step 8: Turnaround time is calculated by all the total times of each process.
-            WaitingTime = 0.00 # Resetting Waiting Time for next process. 
+            TAT = TAT + (Totalwait - ServiceTime) # Step 8: Turnaround time is calculated by all the total times of each process.
+            ServiceTime = 0.00 # Resetting Waiting Time for next process. 
         Avgwait = (Totalwait / sched.len) # Step 9: Calculating Average wait time by dividing total time by the amount of processes.
         AvgTAT = (TAT / sched.len) # Step 10: Calculating Average Turnaround time by dividing the Turnaround time by the amount of processes.
 
@@ -53,8 +54,8 @@ class Scheduling:
     def SJN(sched): 
         print("\n")
         Schd = list(sched.data) # Step 1&2&3&4: Create number of processes, with ID & service time for each process and their processing times.
-        WaitingTime = 0.00 # Step 3: Waiting Time of first process is zero.
-        Totalwait = 0.00
+        ServiceTime = 0.00 
+        Totalwait = 0.00 # Step 3: Waiting Time of first process is zero
         TAT = 0.00
 
     # Will go throughout the entire list scheddata and if the process is smaller than another one, they will swap places, until the shortest process is at the front.
@@ -70,12 +71,12 @@ class Scheduling:
             while num >= 1: # Until the index value is reduced to 0.
                 print(num)
                 num -= 1
-                Totalwait += 1 # Step 4&5&6&7: Calculating Total time&Totalwait of one process. Waiting time of one process is the total time of previous process.
-                WaitingTime += 1
-            print(f"Process finished, waiting time was: {WaitingTime}.") # Step 11: Displaying result
+                ServiceTime += 1
+            print(f"Process finished, service time required to finish process was: {ServiceTime}.") # Step 11: Displaying result
+            Totalwait += ServiceTime # Step 4&5&6&7: Calculating Total time&Totalwait of one process. Waiting time of one process is the total time of previous process.
             print(f"The total time waiting to finish process was: {Totalwait}.\n") # Step 11: Displaying result
-            TAT = TAT + (Totalwait - WaitingTime) # Step 8: Total turnaround time calculated by adding all total time of each process.
-            WaitingTime=0.00 # Resetting Waiting Time for next Process
+            TAT = TAT + (Totalwait - ServiceTime) # Step 8: Total turnaround time calculated by adding all total time of each process.
+            ServiceTime=0.00 # Resetting Waiting Time for next Process
         Avgwait = (Totalwait / sched.len) # Step 9: Calculate average waiting time by dividing the total waiting time by total number of processes.
         AvgTAT = (TAT / sched.len) # Step 10: Calculate average turnaround time by dividing the total waiting time by total number of process.
 
@@ -92,12 +93,11 @@ class Scheduling:
         Schd = list(sched.data)  # Step 1 and 2: Initializing structure elements and getting the received input from user for burst/etc.
         Schd2 = list(sched.data)
         WaitingTime = [0]
-        Totalwait = 0.00
+        Totalwait = sum(Schd)
         TAT = [0]
         TTAT = 0
         quantum = 5 # Time Quantum
         Time = 0 # Current time
-
         while(1):
             done = True
             for i in range(int(sched.len)):
@@ -114,8 +114,7 @@ class Scheduling:
             if done == True: 
                 break
 
-        for i in range(int((sched.len)+1)):
-            Totalwait = Totalwait + int(WaitingTime[i])
+
         for i in range(int(sched.len)):
             T = int(Schd2[i]) + int(WaitingTime[i])
             TAT.append(T)
@@ -142,7 +141,7 @@ class Scheduling:
         priomax = int(input("Enter the maximum priority: "))
         pseudowait = 0.00
         pseudototal = 0.00
-        WaitingTime = 0 # Step 3: initially, wait time and totalwait is 0 for first element
+        ServiceTime = 0 # Step 3: initially, wait time and totalwait is 0 for first element
         Totalwait = 0.00
         TAT = 0.00
 
@@ -176,15 +175,15 @@ class Scheduling:
                 print(num)
                 num -= 1
                 Totalwait += 1 # Step 5: TWT is calculated by adding the waiting time for lack processes.
-                WaitingTime += 1 
+                ServiceTime += 1 
                 pseudototal += 1
-            print(f"Process finished, waiting time was: {WaitingTime}.") # Step 9: Displaying the result.
+            print(f"Process finished, service time required to finish process was: {ServiceTime}.") # Step 9: Displaying the result.
             print(f"The total time waiting to finish process was: {Totalwait}.\n") # Step 9: Displaying the result.
-            WaitingTime = pseudowait # Step 4: all other elements total wait will be pseudototal and wait time pseudowait.
+            ServiceTime = pseudowait # Step 4: all other elements total wait will be pseudototal and wait time pseudowait.
             # This yields expected wait time for each element individually, taking into account i[0] = Waitingtime = t0 = burst
             Totalwait = pseudototal # Step 4&5: all other elements total wait will be pseudototal and wait time pseudowait. Totalwait is calculated by adding waiting time for lack processes
             # This yields expected Total wait time for all elements
-            TAT = TAT + (Totalwait - WaitingTime) #Step 5: Turnaround is calculated by adding all total times of processes.
+            TAT = TAT + (Totalwait - ServiceTime) #Step 5: Turnaround is calculated by adding all total times of processes.
         Avgwait = (Totalwait / sched.len) # Step 7: Average wait time is calculated by dividing total with number of processes.
         AvgTAT = (TAT / sched.len) # Step 8: Average turnaround time is calculated by dividing Turnaround with number of processes.
 

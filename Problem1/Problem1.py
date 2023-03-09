@@ -151,8 +151,7 @@ class Scheduling:
             if priomax < int(T):
                 priomax = int(T)
 
-        print("\n")
-        print(f"Processes: {Schd}") # Step 9: Displaying the result.
+        print(f"\nProcesses: {Schd}") # Step 9: Displaying the result.
         print(f"Priority: {Prio}") # Step 9: Displaying the result.
         print(f"Max Priority: {priomax}\n") # Step 9: Displaying the result.
 
@@ -179,11 +178,11 @@ class Scheduling:
                 pseudototal += 1
             print(f"Process finished, service time required to finish process was: {ServiceTime}.") # Step 9: Displaying the result.
             print(f"The total time waiting to finish process was: {Totalwait}.\n") # Step 9: Displaying the result.
+            TAT = TAT + (Totalwait - ServiceTime) #Step 5: Turnaround is calculated by adding all total times of processes.
             ServiceTime = pseudowait # Step 4: all other elements total wait will be pseudototal and wait time pseudowait.
             # This yields expected wait time for each element individually, taking into account i[0] = Waitingtime = t0 = burst
             Totalwait = pseudototal # Step 4&5: all other elements total wait will be pseudototal and wait time pseudowait. Totalwait is calculated by adding waiting time for lack processes
             # This yields expected Total wait time for all elements
-            TAT = TAT + (Totalwait - ServiceTime) #Step 5: Turnaround is calculated by adding all total times of processes.
         Avgwait = (Totalwait / sched.len) # Step 7: Average wait time is calculated by dividing total with number of processes.
         AvgTAT = (TAT / sched.len) # Step 8: Average turnaround time is calculated by dividing Turnaround with number of processes.
 

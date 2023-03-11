@@ -1,6 +1,10 @@
 # PROBLEM 1: Implement the Various CPU Scheduling Algorithms.
 # Done by Guillaume Comfort.
 # Scheduling.py is meant to be ran, not this one.
+# To make this run faster, i.e without subtracting by 1 each pass of the while loop, you have two options:
+# First option is to include an "if num % 2 == 0" statement which will detect if the process mod 2 gives a remainder of 0, and then to subtract 2 from each pass, halving the time for processes with an even number time to complete. Doesn't do much if all numbers are odd.
+# The second option is to straight up remove the while loop and move the num var to after ST/TWT/etc and have the ST/TWT/etc += num, then num -= num 
+# I just did it like this because it shows the process being completed as if in real time. 
 
 class Scheduling:
     #scheddata = [9, 8, 6, 2, 3, 4, 5, 7, 10, 1]

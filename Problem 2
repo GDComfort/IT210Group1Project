@@ -1,0 +1,20 @@
+import numpy as np
+
+def isSafe(n_processes, n_resources, allocation, need, available):
+    work = available.copy()
+    finish = np.zeros(n_processes, dtype=bool)
+
+    while True:
+        # Find an index i (row i) such that Finish[i] = false and Need[i] <= Work
+        i = 0
+        while i < n_processes and (finish[i] or not all(need[i] <= work)):
+            i += 1
+        if i == n_processes:
+            break
+        
+        # Mark process i as finished and add all its resources to the Work vector
+        work += allocation[i]
+        finish[i] = True
+    
+    # If all processes are marked as finished, then the system is in a safe state
+    return all(finish)

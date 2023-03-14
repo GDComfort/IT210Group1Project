@@ -162,6 +162,7 @@ class Scheduling:
         for i in range(int(sched.len)):
             for j in range(1, int(len(Prio))):
                 while int(Prio[j - 1]) < int(Prio[j]):  # Arranging processes in order of priority, until highest priorities and it's elements are at top.
+                #if you want lower number to be higher priority, simply swap < for >
                     Prio[j-1], Prio[j] = Prio[j], Prio[j-1]
                     Schd[j-1], Schd[j] = Schd[j], Schd[j-1]
                     # Yields expected order of [9, 3, 6, 7, 5] -> [9, 6, 4, 3, 1] with Control data. Assumed for all cases.

@@ -13,7 +13,6 @@ class Scheduler:
             print("3: Round Robin Scheduling.")
             print("4: Priority Scheduling.")
             print("5: Exit. \n")
-            #Rest not available, will add them here eventually
             choice = int(input("Enter choice here: "))
 
             if choice == 1:

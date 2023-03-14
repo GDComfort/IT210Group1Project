@@ -18,3 +18,17 @@ def isSafe(n_processes, n_resources, allocation, need, available):
     
     # If all processes are marked as finished, then the system is in a safe state
     return all(finish)
+
+
+n_processes = 3
+n_resources = 4
+
+max_resources = np.array([[3, 3, 2, 2], [1, 2, 3, 4], [1, 3, 5, 0]])
+allocation = np.array([[1, 2, 2, 1], [1, 0, 3, 3], [1, 2, 1, 0]])
+available = np.array([3, 1, 1, 2])
+need = max_resources - allocation
+
+if isSafe(n_processes, n_resources, allocation, need, available):
+    print("Initial state is safe.")
+else:
+    print("Initial state is unsafe.")

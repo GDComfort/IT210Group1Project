@@ -142,7 +142,7 @@ class Scheduling:
         print("\n")
         Schd = list(sched.data) # Step 1&2 Getting the number of processes from user input/burst time/etc
         Prio = []
-        priomax = int(input("Enter the maximum priority: "))
+        #priomax = int(input("Enter the maximum priority: "))
         pseudowait = 0.00
         pseudototal = 0.00
         ServiceTime = 0 # Step 3: initially, wait time and totalwait is 0 for first element
@@ -152,12 +152,12 @@ class Scheduling:
         for i in range(int(sched.len)): # Step 1&2: Getting the priority of processes from user input.
             T = int(input(f"Enter priority for process {i+1}: "))
             Prio.append(T)
-            if priomax < int(T):
-                priomax = int(T)
+            #if priomax < int(T):
+             #   priomax = int(T)
 
         print(f"\nProcesses: {Schd}") # Step 9: Displaying the result.
         print(f"Priority: {Prio}") # Step 9: Displaying the result.
-        print(f"Max Priority: {priomax}\n") # Step 9: Displaying the result.
+        #print(f"Max Priority: {priomax}\n") # Step 9: Displaying the result.
 
         for i in range(int(sched.len)):
             for j in range(1, int(len(Prio))):
@@ -168,6 +168,7 @@ class Scheduling:
                     # Yields expected order of [9, 3, 6, 7, 5] -> [9, 6, 4, 3, 1] with Control data. Assumed for all cases.
                     pseudowait += 1 #Step 4: all other elements total wait will be pseudototal and wait time pseudowait.
                     pseudototal += 1 #Step 5: TWT is calculated by adding the waiting time for lack processes.
+                    # This does not affect turnaround time at all, only affects TWT and AvgWT. 
 
         print(f"Sorted processes: {Schd}") # Step 9: Displaying the result.
         print(f"Sorted priority: {Prio}\n") # Step 9: Displaying the result.

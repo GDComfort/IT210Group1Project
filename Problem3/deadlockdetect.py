@@ -3,15 +3,15 @@
 #Procedure I: Simply detects the existence of a Cycle:
 
 def find(vertex, graph):
-    visited = set()
-    stack = [vertex]
-    while stack:
-        current = stack.pop()
-        visited.add(current)
+    seen = set()
+    stack1 = [vertex]
+    while stack1:
+        current = stack1.pop()
+        seen.add(current)
         neighbors = graph[current]
         for neighbor in neighbors:
-            if neighbor not in visited:
-                stack.append(neighbor)
+            if neighbor not in seen:
+                stack1.append(neighbor)
             else:
                 #if a cycle is found
                 return True

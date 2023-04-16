@@ -11,7 +11,7 @@ The Group members/Their Github and their respective problems they were responsib
 
 - Khadija Abdi - Kabdi01 - Problem 3: Deadlock Detection Algorithm
 
-- Precious Onyejose - 
+- ~~Precious Onyejose~~ -
 
 - Glory Deji-Akinlotan - gdeji - Problem 6: File Allocation Strategies: (a) Sequential, (b) Indexed, (c) Linked
 
